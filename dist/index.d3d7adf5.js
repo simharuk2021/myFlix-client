@@ -618,12 +618,12 @@ module.exports = require('./cjs/react-refresh-runtime.development.js');
     exports.setSignature = setSignature;
 })();
 
-},{}],"kHwY8":[function(require,module,exports) {
+},{}],"6jaKI":[function(require,module,exports) {
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d751713988987e9331980363e24189ce";
-module.bundle.HMR_BUNDLE_ID = "4e09e7bc763b6c745ffebab866f9d47f"; // @flow
+module.bundle.HMR_BUNDLE_ID = "eff868d1f8fb48c1e20a4f09d3d7adf5"; // @flow
 /* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE */ /*::
 import type {
   HMRAsset,
@@ -858,7 +858,7 @@ function hmrAcceptRun(bundle/*: ParcelRequire */ , id/*: string */ ) {
     acceptedAssets[id] = true;
 }
 
-},{}],"2xsSK":[function(require,module,exports) {
+},{}],"5L4EF":[function(require,module,exports) {
 var helpers = require("../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -879,7 +879,7 @@ class MyFlixApplication extends _reactDefault.default.Component {
     render() {
         return(/*#__PURE__*/ _reactDefault.default.createElement(_mainViewJsxDefault.default, {
             __source: {
-                fileName: "G:\\coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\index.jsx",
+                fileName: "G:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\index.jsx",
                 lineNumber: 13
             },
             __self: this
@@ -896,7 +896,7 @@ _reactDomDefault.default.render(/*#__PURE__*/ _reactDefault.default.createElemen
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","react-dom":"2sg1U","./index.scss":"tjrkm","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f","../components/main-view/main-view.jsx":"1tEoM"}],"3b2NM":[function(require,module,exports) {
+},{"react":"3b2NM","react-dom":"2sg1U","./index.scss":"5hPK5","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f","../components/main-view/main-view.jsx":"c1imi"}],"3b2NM":[function(require,module,exports) {
 'use strict';
 module.exports = require('./cjs/react.development.js');
 
@@ -21845,7 +21845,7 @@ module.exports = require('./cjs/scheduler-tracing.development.js');
     exports.unstable_wrap = unstable_wrap;
 })();
 
-},{}],"tjrkm":[function() {},{}],"367CR":[function(require,module,exports) {
+},{}],"5hPK5":[function() {},{}],"367CR":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -21997,7 +21997,7 @@ function registerExportsForReactRefresh(module) {
     }
 }
 
-},{"react-refresh/runtime":"592mh"}],"1tEoM":[function(require,module,exports) {
+},{"react-refresh/runtime":"592mh"}],"c1imi":[function(require,module,exports) {
 var helpers = require("../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -22041,7 +22041,7 @@ class MainView extends _reactDefault.default.Component {
         if (movies.length === 0) return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "main-view",
             __source: {
-                fileName: "G:\\coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\components\\main-view\\main-view.jsx",
+                fileName: "G:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\components\\main-view\\main-view.jsx",
                 lineNumber: 18
             },
             __self: this
@@ -22049,14 +22049,14 @@ class MainView extends _reactDefault.default.Component {
         else return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "main-view",
             __source: {
-                fileName: "G:\\coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\components\\main-view\\main-view.jsx",
+                fileName: "G:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\components\\main-view\\main-view.jsx",
                 lineNumber: 21
             },
             __self: this
         }, movies.map((movie)=>{
             return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
                 __source: {
-                    fileName: "G:\\coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\components\\main-view\\main-view.jsx",
+                    fileName: "G:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\components\\main-view\\main-view.jsx",
                     lineNumber: 23
                 },
                 __self: this
@@ -22071,6 +22071,6 @@ exports.default = MainView;
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}]},["1j6wU","kHwY8","2xsSK"], "2xsSK", "parcelRequire279c")
+},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}]},["1j6wU","6jaKI","5L4EF"], "5L4EF", "parcelRequire279c")
 
-//# sourceMappingURL=index.66f9d47f.js.map
+//# sourceMappingURL=index.d3d7adf5.js.map
