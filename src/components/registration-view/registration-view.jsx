@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 export function RegistrationView (props){
     const[ username, setUsername] = useState('');
     const[ password, setPassword] = useState('');
@@ -43,7 +44,7 @@ props.onRegistration(username);
         username: PropTypes.string.isRequired,
         password: PropTypes.string.isRequired,
         email: PropTypes.string.isRequired,
-        birthday: PropTypes.string.isRequired
-       }).isRequired,
-       onRegistration: PropTypes.func.isRequired
+        birthday: PropTypes.string.isRequired,
+       }),
+       onRegistration: PropTypes.func.isRequired,
    };

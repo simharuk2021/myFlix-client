@@ -17,11 +17,6 @@ export class MainView extends React.Component {
         };
     }
 
-onRegistration(register) {this.setState({
-    register,
-});
-}
-
 //code below integrates with the API information hosted by heroku (linked to MongoDB Atlas)
 componentDidMount(){
     axios.get('https://my-movies-souperapp.herokuapp.com/movies')
@@ -44,6 +39,11 @@ setSelectedMovie(newSelectedMovie) {
 }
 
 //the function updates the user property to the specific user
+
+onRegistration(register) {this.setState({
+    register,
+});
+}
 
 onLoggedIn(user) {
     this.setState({user});
