@@ -3,7 +3,7 @@ export function LoginView (props){
     const[ username, setUsername] = useState('');
     const[ password, setPassword] = useState('');
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
 e.preventDefault();
 console.log(username, password);
 /* Send a request to the server for authentication
@@ -19,9 +19,9 @@ props.onLoggedIn(username);
     </label>
      <label>
     Password:
-    <input type = "text" value = {password} onChange={e => setPassword(e.target.value)}/>    
+    <input type = "password" value = {password} onChange={e => setPassword(e.target.value)}/>    
     </label>
-    <button type ="button" onClick={handleSubmit}>Submit</button>
+    <button type ="submit" onClick={handleSubmit}>Submit</button>
     </form>
     );
    }
