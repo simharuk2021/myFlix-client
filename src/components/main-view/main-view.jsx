@@ -13,7 +13,7 @@ export class MainView extends React.Component {
             movies: [],
             selectedMovie: null,
             user: null,
-            register:null
+            registered:null
         };
     }
 
@@ -40,8 +40,8 @@ setSelectedMovie(newSelectedMovie) {
 
 //the function updates the user property to the specific user
 
-onRegistration(register) {this.setState({
-    register,
+onRegistration(registered) {this.setState({
+    registered,
 });
 }
 
@@ -49,11 +49,19 @@ onLoggedIn(user) {
     this.setState({user});
 }
 
+toggleRegisterView(e) {
+        e.preventDefault();
+        this.setState({
+            registered: !this.state.registered,
+            user: !this.state.user
+        });
+    }
+
     render() {
-        const {movies, selectedMovie, user, register} = this.state;
+        const {movies, selectedMovie, user, registered} = this.state;
 
 //If there is no registered user the registration view is rendered.  If a user registers in registration details are passed as a prop to RegistrationView
-        if (!register) return(<RegistrationView onRegistration={(register) => this.onRegistration(register)} />);
+        if (!registered) return <RegistrationView onRegistration={registered => this.onRegistration(registered)} clickHandler={(e) => this.toggleRegisterView(e)} />;
 //If there is no identified user then the login view is rendered and the user details are passed as a prop to LoginView
         if (!user)
         return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;

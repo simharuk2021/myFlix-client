@@ -22023,7 +22023,7 @@ class MainView extends _reactDefault.default.Component {
             movies: [],
             selectedMovie: null,
             user: null,
-            register: null
+            registered: null
         };
     }
     //code below integrates with the API information hosted by heroku (linked to MongoDB Atlas)
@@ -22043,9 +22043,9 @@ class MainView extends _reactDefault.default.Component {
         });
     }
     //the function updates the user property to the specific user
-    onRegistration(register) {
+    onRegistration(registered) {
         this.setState({
-            register
+            registered
         });
     }
     onLoggedIn(user) {
@@ -22053,15 +22053,24 @@ class MainView extends _reactDefault.default.Component {
             user
         });
     }
+    toggleRegisterView(e) {
+        e.preventDefault();
+        this.setState({
+            registered: !this.state.registered,
+            user: !this.state.user
+        });
+    }
     render() {
-        const { movies , selectedMovie , user , register  } = this.state;
+        const { movies , selectedMovie , user , registered  } = this.state;
         //If there is no registered user the registration view is rendered.  If a user registers in registration details are passed as a prop to RegistrationView
-        if (!register) return(/*#__PURE__*/ _reactDefault.default.createElement(_registrationView.RegistrationView, {
-            onRegistration: (register1)=>this.onRegistration(register1)
+        if (!registered) return(/*#__PURE__*/ _reactDefault.default.createElement(_registrationView.RegistrationView, {
+            onRegistration: (registered1)=>this.onRegistration(registered1)
+            ,
+            clickHandler: (e)=>this.toggleRegisterView(e)
             ,
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 56
+                lineNumber: 64
             },
             __self: this
         }));
@@ -22071,7 +22080,7 @@ class MainView extends _reactDefault.default.Component {
             ,
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 59
+                lineNumber: 67
             },
             __self: this
         }));
@@ -22079,7 +22088,7 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 64
+                lineNumber: 72
             },
             __self: this
         }));
@@ -22087,7 +22096,7 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 68
+                lineNumber: 76
             },
             __self: this
         }, selectedMovie ? /*#__PURE__*/ _reactDefault.default.createElement(_movieView.MovieView, {
@@ -22097,7 +22106,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 69
+                lineNumber: 77
             },
             __self: this
         }) : movies.map((movie)=>/*#__PURE__*/ _reactDefault.default.createElement(_movieCard.MovieCard, {
@@ -22108,7 +22117,7 @@ class MainView extends _reactDefault.default.Component {
                 },
                 __source: {
                     fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                    lineNumber: 70
+                    lineNumber: 78
                 },
                 __self: this
             })
@@ -24584,13 +24593,13 @@ function RegistrationView(props) {
     return(/*#__PURE__*/ _reactDefault.default.createElement("form", {
         __source: {
             fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 19
+            lineNumber: 18
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement("label", {
         __source: {
             fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 20
+            lineNumber: 19
         },
         __self: this
     }, "Username:", /*#__PURE__*/ _reactDefault.default.createElement("input", {
@@ -24600,13 +24609,13 @@ function RegistrationView(props) {
         ,
         __source: {
             fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 22
+            lineNumber: 21
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement("label", {
         __source: {
             fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 24
+            lineNumber: 23
         },
         __self: this
     }, "Password:", /*#__PURE__*/ _reactDefault.default.createElement("input", {
@@ -24616,13 +24625,13 @@ function RegistrationView(props) {
         ,
         __source: {
             fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 26
+            lineNumber: 25
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement("label", {
         __source: {
             fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 28
+            lineNumber: 27
         },
         __self: this
     }, "Email:", /*#__PURE__*/ _reactDefault.default.createElement("input", {
@@ -24632,13 +24641,13 @@ function RegistrationView(props) {
         ,
         __source: {
             fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 30
+            lineNumber: 29
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement("label", {
         __source: {
             fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 32
+            lineNumber: 31
         },
         __self: this
     }, "Birthday:", /*#__PURE__*/ _reactDefault.default.createElement("input", {
@@ -24648,7 +24657,7 @@ function RegistrationView(props) {
         ,
         __source: {
             fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 34
+            lineNumber: 33
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement("button", {
@@ -24656,7 +24665,7 @@ function RegistrationView(props) {
         onClick: handleSubmit,
         __source: {
             fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 37
+            lineNumber: 36
         },
         __self: this
     }, "Register")));
