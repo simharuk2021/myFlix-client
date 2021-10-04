@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
 export function RegistrationView (props){
     const[ username, setUsername] = useState('');
@@ -15,15 +17,17 @@ props.onRegistration(username);
 
     };
     
-    return (<form>
-    <label>
-    Username:
-    <input type = "text" value = {username} onChange={e => setUsername(e.target.value)}/>    
-    </label>
-    <label>
-    Password:
-    <input type = "password" value = {password} onChange={e => setPassword(e.target.value)}/>    
-    </label>
+    return (
+        <Form>
+    <Form.Group controlId = "formUsername">
+    <Form.Label>Username: </Form.Label>
+    <Form.Control type = "text" onChange={e => setUsername(e.target.value)}/>    
+    </Form.Group>
+
+    <Form.Group controlId = "pasword">
+    <Form.Label>Password:</Form.Label>
+     <Form.Control type = "password" onChange={e => setPassword(e.target.value)}/>    
+    </Form.Group>
     <label>
     Email:
     <input type = "email" value = {email} onChange={e => setEmail(e.target.value)}/>    
@@ -34,7 +38,7 @@ props.onRegistration(username);
     </label>
 
     <button type ="submit" onClick={handleSubmit}>Register</button>
-    </form>
+    </Form>
     );
    }
 
