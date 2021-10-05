@@ -4,6 +4,10 @@ import {LoginView} from '../login-view/login-view';
 import {MovieCard } from '../movie-card/movie-card';
 import {MovieView} from '../movie-view/movie-view';
 import {RegistrationView} from '../registration-view/registration-view';
+import { Container } from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 export class MainView extends React.Component {
 
     constructor(){
@@ -73,11 +77,19 @@ toggleRegisterView(e) {
             
         } else {
             return (
+                <Container>
             <div className = "main-view">
-            {selectedMovie ? <MovieView movie={selectedMovie} onBackClick={(newSelectedMovie) => {this.setSelectedMovie(newSelectedMovie);}}/>:
+            {selectedMovie ? <Row className = "justify-content-md-center">
+                            <Col md={8}>
+            <MovieView movie={selectedMovie} onBackClick={(newSelectedMovie) => {this.setSelectedMovie(newSelectedMovie);}}/>
+            </Col>
+            </Row>
+            : 
             movies.map(movie => (<MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }} />))
+            
             }
                 </div>
+                </Container>
                 );
             }
     }

@@ -28,16 +28,18 @@ props.onRegistration(username);
     <Form.Label>Password:</Form.Label>
      <Form.Control type = "password" onChange={e => setPassword(e.target.value)}/>    
     </Form.Group>
-    <label>
-    Email:
-    <input type = "email" value = {email} onChange={e => setEmail(e.target.value)}/>    
-    </label>
-    <label>
-    Birthday:
-    <input type = "birthday" value = {birthday} onChange={e => setBirthday(e.target.value)}/>    
-    </label>
 
-    <button type ="submit" onClick={handleSubmit}>Register</button>
+    <Form.Group controlId = "email">
+    <Form.Label>Email: </Form.Label>
+    <Form.Control type = "email" onChange={e => setEmail(e.target.value)}/>    
+    </Form.Group>
+
+    <Form.Group controlId = "birthday">
+    <Form.Label>Birthday:</Form.Label>
+    <Form.Control type = "birthday" onChange={e => setBirthday(e.target.value)}/>    
+    </Form.Group>
+
+    <Button variant = "primary" type ="submit" onClick={handleSubmit}>Register</Button>
     </Form>
     );
    }
