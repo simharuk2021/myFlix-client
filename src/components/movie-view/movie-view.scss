@@ -1,0 +1,26 @@
+// .movie-view{
+//     align-items: center;
+// }
+
+.movieIMG{
+    height:auto;    
+    width: auto;
+    position:relative;
+    left: 25%;
+}
+.movie-title{
+    font-size: 120%;
+text-align: center;
+}
+.movie-description{
+    position: top;
+    margin-bottom: 1rem;
+}
+
+.movieBack{
+ position:relative;
+ bottom:0;
+ left: 40%;
+ margin-top: 1rem;
+ margin-bottom: 1rem;
+}

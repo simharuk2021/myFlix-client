@@ -5,4 +5,55 @@
 .movie-poster img {
   max-height: 300px;
 }
+.cardBorder {
+  width: 17rem;
+  height: 47rem;
+  padding: 0;
+}
+
+.cardIMG {
+  height: 20rem;
+}
+
+.cardTitle {
+  text-align: center;
+}
+
+.cardText {
+  text-align: center;
+}
+
+.cardBtn {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 1rem;
+  left: 40%;
+  margin-top: 1rem;
+}
+.movieIMG {
+  height: auto;
+  width: auto;
+  position: relative;
+  left: 25%;
+}
+
+.movie-title {
+  font-size: 120%;
+  text-align: center;
+}
+
+.movie-description {
+  position: top;
+  margin-bottom: 1rem;
+}
+
+.movieBack {
+  position: relative;
+  bottom: 0;
+  left: 40%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+
 /*# sourceMappingURL=index.19204d64.css.map */

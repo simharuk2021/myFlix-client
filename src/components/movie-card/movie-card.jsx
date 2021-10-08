@@ -2,18 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import './movie-card.scss';
+
 
 
 export class MovieCard extends React.Component{
     render() {
         const {movie, onMovieClick} = this.props;
         return (
-                 <Card style={{ width: '18rem'}}>
-        <Card.Img variant="top" src={movie.ImagePath} />
+                 <Card border = "dark" className="cardBorder">
+        <Card.Img variant="top"  src={movie.ImagePath} className ="cardIMG"/>
         <Card.Body>
-          <Card.Title>{movie.Title}</Card.Title>
-          <Card.Text>{movie.Description}</Card.Text>
-          <Button variant = "primary" onClick={() => onMovieClick(movie)} variant="link">Open</Button>
+          <Card.Header><Card.Title className = "cardTitle">{movie.Title}</Card.Title></Card.Header>
+          <Card.Text className="cardText">{movie.Description}</Card.Text>
+          <Button variant = "danger" onClick={() => onMovieClick(movie)} variant="danger" className="cardBtn">Open</Button>
         </Card.Body>
       </Card>
         );

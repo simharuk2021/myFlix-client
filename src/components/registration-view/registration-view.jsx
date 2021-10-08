@@ -39,7 +39,7 @@ props.onRegistration(username);
     <Form.Control type = "birthday" onChange={e => setBirthday(e.target.value)}/>    
     </Form.Group>
 
-    <Button variant = "primary" type ="submit" onClick={handleSubmit}>Register</Button>
+    <Button variant = "danger" type ="submit" onClick={handleSubmit}>Register</Button>
     </Form>
     );
    }
