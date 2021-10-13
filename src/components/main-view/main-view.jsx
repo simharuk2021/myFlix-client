@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from'axios';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import {LoginView} from '../login-view/login-view';
 import {MovieCard } from '../movie-card/movie-card';
 import {MovieView} from '../movie-view/movie-view';
@@ -21,33 +22,41 @@ export class MainView extends React.Component {
         };
     }
 
-//code below integrates with the API information hosted by heroku (linked to MongoDB Atlas)
-componentDidMount(){
-    axios.get('https://my-movies-souperapp.herokuapp.com/movies')
-    .then(response => {
-        this.setState({
-            movies: response.data
-        });
-    })
-    .catch(error => {
-        console.log(error);
-    });
-}
-
 getMovies(token) {
     axios.get('https://my-movies-souperapp.herokuapp.com/movies', {
         headers: {Authorization: `Bearer ${token}`}
     })
     .then (response => {
-        //asign the result to the state
+        //assign the result to the state
         this.setState({
             movies: response.data
         });
     })
     .catch(function (error) {
-        console.lof(error);
+        console.log(error);
     });
 }
+
+//code below integrates with the API information hosted by heroku (linked to MongoDB Atlas)
+componentDidMount(){
+    let accessToken=localStorage.getItem('token');
+    if (accessToken !== null) {
+        this.setState({
+            user: localStorage.getItem('user')
+        });
+        this.getMovies(accessToken);
+    }
+}
+//     axios.get('https://my-movies-souperapp.herokuapp.com/movies')
+//     .then(response => {
+//         this.setState({
+//             movies: response.data
+//         });
+//     })
+//     .catch(error => {
+//         console.log(error);
+//     });
+// }
 
 //below code invokes a function which updates the state of selectedMovie to the specific movie 
 setSelectedMovie(newSelectedMovie) {
@@ -79,6 +88,14 @@ toggleRegisterView(e) {
         });
     }
 
+onLoggedOut() {
+  localStorage.removeItem('token');
+  localStorage.removeItem('user');
+  this.setState({
+    user: null
+  });
+}
+
     render() {
         const {movies, selectedMovie, user, registered} = this.state;
 
@@ -88,14 +105,14 @@ toggleRegisterView(e) {
         if (!user)
         return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
 
-
-
         if (movies.length === 0){
             return <div className="main-view" />; 
             
         } else {
             return (
+                <Router>
                 <Container>
+                <button onClick={() => { this.onLoggedOut() }}>Logout</button>
                         {selectedMovie ? (
                             <Row className = "main-view justify-content-md-center">
                             <Col md={6}>
@@ -103,14 +120,30 @@ toggleRegisterView(e) {
             </Col>
             </Row>)
             : (<Row className = "justify-content-md-centre">
-            {movies.map(movie => 
+            <Route exact path ="/" render={() => {
+                return movies.map(movie => 
             (<Col xl = {3} lg ={4} md={6} sm={12}>
             <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }} />
             </Col>))
-            }
+            }}/>
+
+            <Route path="/movies/:movieID" render={({match}) => {
+                return <Col md={8}>
+                <MovieView movie={movies.find(movie=>movie.id === match.params.movieID)}/>
+                </Col>
+            }} />
+            <Route path="/directors/:name" render={({ match }) => {
+  if (movies.length === 0) return <div className="main-view" />;
+  return <Col md={8}>
+    <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} />
+  </Col>
+}
+} />
+            
                 </Row>)
         }
            </Container>      
+           </Router>
                 );
             }
     }
