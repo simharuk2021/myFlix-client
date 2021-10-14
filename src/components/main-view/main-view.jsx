@@ -121,15 +121,15 @@ onLoggedOut() {
             </Row>)
             : (<Row className = "justify-content-md-centre">
             <Route exact path ="/" render={() => {
-                return movies.map(movie => 
+                return movies.map(m => 
             (<Col xl = {3} lg ={4} md={6} sm={12}>
-            <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }} />
+            <MovieCard key={m._id} movie={m} onMovieClick={(movie) => { this.setSelectedMovie(movie) }} />
             </Col>))
             }}/>
 
-            <Route path="/movies/:movieID" render={({match}) => {
+            <Route path="/movies/:movieId" render={({match}) => {
                 return <Col md={8}>
-                <MovieView movie={movies.find(movie=>movie.id === match.params.movieID)}/>
+                <MovieView movie={movies.find(m => m.id === match.params.movieID)}/>
                 </Col>
             }} />
             <Route path="/directors/:name" render={({ match }) => {

@@ -5,6 +5,7 @@ import './movie-view.scss';
 import Card from'react-bootstrap/Card';
 import Image from'react-bootstrap/Image';
 import { MovieCard } from '../movie-card/movie-card';
+import { Link } from "react-router-dom";
 export class MovieView extends React.Component{
 
 // keypressCallback(event){
@@ -40,8 +41,16 @@ export class MovieView extends React.Component{
             <span className = "value">{movie.Description}</span>
             </div>
             <div className = "movie-director">
+        <Link to={`/directors/${movie.Director.Name}`}>
             <span className = "label">Director: </span>
-            <span className = "value">{movie.Director}</span>
+            <span className = "value">{movie.Director[0].Name}</span>
+        </Link>
+            </div>
+            <div className = "movie-genre">
+        <Link to={`/genres/${movie.Genre.Name}`}>
+            <span className = "label">Genre: </span>
+            <span className = "value">{movie.Genre[0].Name}</span>
+        </Link>
             </div>
             <Button variant ="danger" onClick={() => {onBackClick(null);}} className ="movieBack">Back</Button>
             </Card.Body>
