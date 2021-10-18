@@ -22024,6 +22024,8 @@ var _loginView = require("../login-view/login-view");
 var _movieCard = require("../movie-card/movie-card");
 var _movieView = require("../movie-view/movie-view");
 var _registrationView = require("../registration-view/registration-view");
+var _directorView = require("../director-view/director-view");
+var _genreView = require("../genre-view/genre-view");
 var _container = require("react-bootstrap/Container");
 var _containerDefault = parcelHelpers.interopDefault(_container);
 var _row = require("react-bootstrap/Row");
@@ -22066,16 +22068,6 @@ class MainView extends _reactDefault.default.Component {
             this.getMovies(accessToken);
         }
     }
-    //     axios.get('https://my-movies-souperapp.herokuapp.com/movies')
-    //     .then(response => {
-    //         this.setState({
-    //             movies: response.data
-    //         });
-    //     })
-    //     .catch(error => {
-    //         console.log(error);
-    //     });
-    // }
     //below code invokes a function which updates the state of selectedMovie to the specific movie 
     setSelectedMovie(newSelectedMovie) {
         this.setState({
@@ -22121,7 +22113,7 @@ class MainView extends _reactDefault.default.Component {
             ,
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 103
+                lineNumber: 106
             },
             __self: this
         }));
@@ -22131,7 +22123,7 @@ class MainView extends _reactDefault.default.Component {
             ,
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 106
+                lineNumber: 109
             },
             __self: this
         }));
@@ -22139,20 +22131,20 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 109
+                lineNumber: 112
             },
             __self: this
         }));
         else return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.BrowserRouter, {
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 113
+                lineNumber: 116
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_containerDefault.default, {
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 114
+                lineNumber: 117
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("button", {
@@ -22161,21 +22153,21 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 115
+                lineNumber: 118
             },
             __self: this
         }, "Logout"), selectedMovie ? /*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
             className: "main-view justify-content-md-center",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 117
+                lineNumber: 120
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
             md: 6,
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 118
+                lineNumber: 121
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_movieView.MovieView, {
@@ -22185,14 +22177,14 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 119
+                lineNumber: 122
             },
             __self: this
         }))) : /*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
             className: "justify-content-md-centre",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 122
+                lineNumber: 126
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22203,52 +22195,70 @@ class MainView extends _reactDefault.default.Component {
                         xl: 3,
                         lg: 4,
                         md: 6,
-                        sm: 12
+                        sm: 12,
+                        key: m._id
                     }, /*#__PURE__*/ _reactDefault.default.createElement(_movieCard.MovieCard, {
-                        key: m._id,
-                        movie: m,
-                        onMovieClick: (movie)=>{
-                            this.setSelectedMovie(movie);
-                        }
+                        movie: m
                     }))
                 );
             },
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 123
+                lineNumber: 127
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
             path: "/movies/:movieId",
-            render: ({ match  })=>{
+            render: ({ match , history  })=>{
                 return(/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
                     md: 8
                 }, /*#__PURE__*/ _reactDefault.default.createElement(_movieView.MovieView, {
-                    movie: movies.find((m)=>m.id === match.params.movieID
-                    )
+                    movie: movies.find((m)=>m._id === match.params.movieId
+                    ),
+                    onBackClick: ()=>history.goBack()
                 })));
             },
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 130
+                lineNumber: 132
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
             path: "/directors/:name",
-            render: ({ match  })=>{
+            render: ({ match , history  })=>{
                 if (movies.length === 0) return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
                     className: "main-view"
                 }));
                 return(/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
                     md: 8
-                }, /*#__PURE__*/ _reactDefault.default.createElement(DirectorView, {
+                }, /*#__PURE__*/ _reactDefault.default.createElement(_directorView.DirectorView, {
                     director: movies.find((m)=>m.Director.Name === match.params.name
-                    ).Director
+                    ).Director,
+                    onBackClick: ()=>history.goBack()
                 })));
             },
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 135
+                lineNumber: 137
+            },
+            __self: this
+        }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
+            path: "/genres/:name",
+            render: ({ match , history  })=>{
+                if (movies.length === 0) return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+                    className: "main-view"
+                }));
+                return(/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
+                    md: 8
+                }, /*#__PURE__*/ _reactDefault.default.createElement(_genreView.GenreView, {
+                    genre: movies.find((m)=>m.Genre.Name === match.params.name
+                    ).Genre,
+                    onBackClick: ()=>history.goBack()
+                })));
+            },
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
+                lineNumber: 144
             },
             __self: this
         })))));
@@ -22260,7 +22270,7 @@ class MainView extends _reactDefault.default.Component {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","axios":"7rA65","react-router-dom":"1PMSK","../login-view/login-view":"2B7mO","../movie-card/movie-card":"5LP9x","../movie-view/movie-view":"3ZYxF","../registration-view/registration-view":"3yRw2","react-bootstrap/Container":"3Mt3t","react-bootstrap/Row":"3fzwD","react-bootstrap/Col":"2D0r8","./main-view.scss":"6hFPM","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"7rA65":[function(require,module,exports) {
+},{"react":"3b2NM","axios":"7rA65","react-router-dom":"1PMSK","../login-view/login-view":"2B7mO","../movie-card/movie-card":"5LP9x","../movie-view/movie-view":"3ZYxF","../registration-view/registration-view":"3yRw2","../director-view/director-view":"2tuFM","../genre-view/genre-view":"1ePJ9","react-bootstrap/Container":"3Mt3t","react-bootstrap/Row":"3fzwD","react-bootstrap/Col":"2D0r8","./main-view.scss":"6hFPM","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"7rA65":[function(require,module,exports) {
 module.exports = require('./lib/axios');
 
 },{"./lib/axios":"4qfhW"}],"4qfhW":[function(require,module,exports) {
@@ -28506,7 +28516,6 @@ class MovieCard extends _reactDefault.default.Component {
             },
             __self: this
         }, "Open")))));
-    // <div onClick ={() => onMovieClick (movie)} className ="movie-card">{movie.Title}</div>);
     }
 }
 MovieCard.propTypes = {
@@ -28514,8 +28523,8 @@ MovieCard.propTypes = {
         Title: _propTypesDefault.default.string.isRequired,
         Description: _propTypesDefault.default.string.isRequired,
         ImagePath: _propTypesDefault.default.string.isRequired,
-        Genre: _propTypesDefault.default.array,
-        Director: _propTypesDefault.default.array
+        Genre: _propTypesDefault.default.object.isRequired,
+        Director: _propTypesDefault.default.object.isRequired
     }).isRequired,
     onMovieClick: _propTypesDefault.default.func.isRequired
 };
@@ -28709,6 +28718,8 @@ parcelHelpers.export(exports, "MovieView", ()=>MovieView
 );
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _mainView = require("../main-view/main-view");
 var _button = require("react-bootstrap/Button");
 var _buttonDefault = parcelHelpers.interopDefault(_button);
@@ -28720,35 +28731,26 @@ var _imageDefault = parcelHelpers.interopDefault(_image);
 var _movieCard = require("../movie-card/movie-card");
 var _reactRouterDom = require("react-router-dom");
 class MovieView extends _reactDefault.default.Component {
-    // keypressCallback(event){
-    //     console.log(event.key);
-    // }
-    // componentDidMount() {
-    //     document.addEventListener('keypress', this.keypressCallback);
-    //   }
-    //     componentWillUnmount() {
-    //     document.removeEventListener('keypress', this.keypressCallback);
-    //   }
     render() {
         const { movie , onBackClick  } = this.props;
         return(/*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default, {
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 27
+                lineNumber: 16
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "movie-view",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 28
+                lineNumber: 17
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "movie-poster",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 29
+                lineNumber: 18
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("img", {
@@ -28757,120 +28759,120 @@ class MovieView extends _reactDefault.default.Component {
             fluid: true,
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 30
+                lineNumber: 19
             },
             __self: this
         })), /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Header, {
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 32
+                lineNumber: 21
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "movie-title",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 33
+                lineNumber: 22
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "label",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 34
+                lineNumber: 23
             },
             __self: this
         }, "Title: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "value",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 35
+                lineNumber: 24
             },
             __self: this
         }, movie.Title))), /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Body, {
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 38
+                lineNumber: 27
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "movie-description",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 39
+                lineNumber: 28
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "label",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 40
+                lineNumber: 29
             },
             __self: this
         }, "Description: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "value",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 41
+                lineNumber: 30
             },
             __self: this
         }, movie.Description)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "movie-director",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 43
+                lineNumber: 32
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
             to: `/directors/${movie.Director.Name}`,
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 44
+                lineNumber: 33
             },
             __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
-            className: "label",
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+            variant: "link",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 45
+                lineNumber: 34
             },
             __self: this
         }, "Director: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "value",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 46
+                lineNumber: 35
             },
             __self: this
-        }, movie.Director[0].Name))), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+        }, movie.Director.Name))), /*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "movie-genre",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 49
+                lineNumber: 38
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
             to: `/genres/${movie.Genre.Name}`,
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 50
+                lineNumber: 39
             },
             __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
-            className: "label",
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+            variant: "link",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 51
+                lineNumber: 40
             },
             __self: this
         }, "Genre: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "value",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 52
+                lineNumber: 41
             },
             __self: this
-        }, movie.Genre[0].Name))), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+        }, movie.Genre.Name))), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
             variant: "danger",
             onClick: ()=>{
                 onBackClick(null);
@@ -28878,19 +28880,32 @@ class MovieView extends _reactDefault.default.Component {
             className: "movieBack",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 55
+                lineNumber: 44
             },
             __self: this
         }, "Back")))));
     }
 }
+MovieView.propTypes = {
+    movie: _propTypesDefault.default.shape({
+        Title: _propTypesDefault.default.string.isRequired,
+        Description: _propTypesDefault.default.string.isRequired,
+        ImagePath: _propTypesDefault.default.string.isRequired,
+        Genre: _propTypesDefault.default.shape({
+            Name: _propTypesDefault.default.string.isRequired
+        }),
+        Director: _propTypesDefault.default.shape({
+            Name: _propTypesDefault.default.string.isRequired
+        })
+    }).isRequired
+};
 
   helpers.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","../main-view/main-view":"42VxT","react-bootstrap/Button":"1ru0l","./movie-view.scss":"7nfJU","react-bootstrap/Card":"1CZWQ","react-bootstrap/Image":"5qrP5","../movie-card/movie-card":"5LP9x","react-router-dom":"1PMSK","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"7nfJU":[function() {},{}],"5qrP5":[function(require,module,exports) {
+},{"react":"3b2NM","prop-types":"4dfy5","../main-view/main-view":"42VxT","react-bootstrap/Button":"1ru0l","./movie-view.scss":"7nfJU","react-bootstrap/Card":"1CZWQ","react-bootstrap/Image":"5qrP5","../movie-card/movie-card":"5LP9x","react-router-dom":"1PMSK","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"7nfJU":[function() {},{}],"5qrP5":[function(require,module,exports) {
 "use strict";
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
@@ -29104,7 +29119,287 @@ $RefreshReg$(_c, "RegistrationView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","react-bootstrap/Form":"6A5ko","react-bootstrap/Button":"1ru0l","prop-types":"4dfy5","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"3Mt3t":[function(require,module,exports) {
+},{"react":"3b2NM","react-bootstrap/Form":"6A5ko","react-bootstrap/Button":"1ru0l","prop-types":"4dfy5","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"2tuFM":[function(require,module,exports) {
+var helpers = require("../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "DirectorView", ()=>DirectorView
+);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _button = require("react-bootstrap/Button");
+var _buttonDefault = parcelHelpers.interopDefault(_button);
+var _directorViewScss = require("./director-view.scss");
+var _card = require("react-bootstrap/Card");
+var _cardDefault = parcelHelpers.interopDefault(_card);
+var _propTypes = require("prop-types");
+class DirectorView extends _reactDefault.default.Component {
+    // keypressCallback(event){
+    //     console.log(event.key);
+    // }
+    // componentDidMount() {
+    //     document.addEventListener('keypress', this.keypressCallback);
+    //   }
+    //     componentWillUnmount() {
+    //     document.removeEventListener('keypress', this.keypressCallback);
+    //   }
+    render() {
+        const { director , movie , onBackClick  } = this.props;
+        return(/*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default, {
+            className: "director-view",
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\director-view\\director-view.jsx",
+                lineNumber: 24
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Header, {
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\director-view\\director-view.jsx",
+                lineNumber: 25
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "director-name",
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\director-view\\director-view.jsx",
+                lineNumber: 26
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "label",
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\director-view\\director-view.jsx",
+                lineNumber: 27
+            },
+            __self: this
+        }, "Name: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "value",
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\director-view\\director-view.jsx",
+                lineNumber: 28
+            },
+            __self: this
+        }, director.Name))), /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Body, {
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\director-view\\director-view.jsx",
+                lineNumber: 31
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "director-bio",
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\director-view\\director-view.jsx",
+                lineNumber: 32
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "label",
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\director-view\\director-view.jsx",
+                lineNumber: 33
+            },
+            __self: this
+        }, "Bio: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "value",
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\director-view\\director-view.jsx",
+                lineNumber: 34
+            },
+            __self: this
+        }, director.Bio)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "director-birth-year",
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\director-view\\director-view.jsx",
+                lineNumber: 36
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "label",
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\director-view\\director-view.jsx",
+                lineNumber: 37
+            },
+            __self: this
+        }, "Birth Year: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "value",
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\director-view\\director-view.jsx",
+                lineNumber: 38
+            },
+            __self: this
+        }, director.Birth)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "director-death-year",
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\director-view\\director-view.jsx",
+                lineNumber: 40
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "label",
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\director-view\\director-view.jsx",
+                lineNumber: 41
+            },
+            __self: this
+        }, "Death Year: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "value",
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\director-view\\director-view.jsx",
+                lineNumber: 42
+            },
+            __self: this
+        }, director.Death)), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+            variant: "danger",
+            onClick: ()=>{
+                onBackClick(null);
+            },
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\director-view\\director-view.jsx",
+                lineNumber: 44
+            },
+            __self: this
+        }, "Back"))));
+    }
+}
+DirectorView.propTypes = {
+    director: _propTypes.PropTypes.shape({
+        Name: _propTypes.PropTypes.string.isRequired,
+        Bio: _propTypes.PropTypes.string.isRequired,
+        Birth: _propTypes.PropTypes.string.isRequired,
+        Death: _propTypes.PropTypes.string.isRequired
+    }).isRequired
+};
+exports.default = DirectorView;
+
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"3b2NM","react-bootstrap/Button":"1ru0l","./director-view.scss":"6VVB3","react-bootstrap/Card":"1CZWQ","prop-types":"4dfy5","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"6VVB3":[function() {},{}],"1ePJ9":[function(require,module,exports) {
+var helpers = require("../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "GenreView", ()=>GenreView
+);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _button = require("react-bootstrap/Button");
+var _buttonDefault = parcelHelpers.interopDefault(_button);
+var _genreViewScss = require("./genre-view.scss");
+var _card = require("react-bootstrap/Card");
+var _cardDefault = parcelHelpers.interopDefault(_card);
+var _propTypes = require("prop-types");
+class GenreView extends _reactDefault.default.Component {
+    // keypressCallback(event){
+    //     console.log(event.key);
+    // }
+    // componentDidMount() {
+    //     document.addEventListener('keypress', this.keypressCallback);
+    //   }
+    //     componentWillUnmount() {
+    //     document.removeEventListener('keypress', this.keypressCallback);
+    //   }
+    render() {
+        const { genre , movie , onBackClick  } = this.props;
+        return(/*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default, {
+            className: "genre-view",
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\genre-view\\genre-view.jsx",
+                lineNumber: 24
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Header, {
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\genre-view\\genre-view.jsx",
+                lineNumber: 25
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "genre-name",
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\genre-view\\genre-view.jsx",
+                lineNumber: 26
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "label",
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\genre-view\\genre-view.jsx",
+                lineNumber: 27
+            },
+            __self: this
+        }, "Name: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "value",
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\genre-view\\genre-view.jsx",
+                lineNumber: 28
+            },
+            __self: this
+        }, genre.Name))), /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Body, {
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\genre-view\\genre-view.jsx",
+                lineNumber: 31
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "genre-description",
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\genre-view\\genre-view.jsx",
+                lineNumber: 32
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "label",
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\genre-view\\genre-view.jsx",
+                lineNumber: 33
+            },
+            __self: this
+        }, "Description: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "value",
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\genre-view\\genre-view.jsx",
+                lineNumber: 34
+            },
+            __self: this
+        }, genre.Description)), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+            variant: "danger",
+            onClick: ()=>{
+                onBackClick(null);
+            },
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\genre-view\\genre-view.jsx",
+                lineNumber: 36
+            },
+            __self: this
+        }, "Back"))));
+    }
+}
+GenreView.propTypes = {
+    genre: _propTypes.PropTypes.shape({
+        Name: _propTypes.PropTypes.string.isRequired,
+        Description: _propTypes.PropTypes.string.isRequired
+    }).isRequired
+};
+exports.default = GenreView;
+
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"3b2NM","react-bootstrap/Button":"1ru0l","./genre-view.scss":"6kDNX","react-bootstrap/Card":"1CZWQ","prop-types":"4dfy5","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"6kDNX":[function() {},{}],"3Mt3t":[function(require,module,exports) {
 "use strict";
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
