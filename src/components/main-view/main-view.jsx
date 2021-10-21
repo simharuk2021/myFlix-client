@@ -7,7 +7,8 @@ import {MovieView} from '../movie-view/movie-view';
 import {RegistrationView} from '../registration-view/registration-view';
 import {DirectorView} from '../director-view/director-view';
 import {GenreView} from '../genre-view/genre-view';
-import Container from 'react-bootstrap/Container';
+// import Container from 'react-bootstrap/Container';
+import {NavBar} from '../nav-bar/nav-bar';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './main-view.scss'
@@ -101,11 +102,13 @@ export class MainView extends React.Component
         }
 
     render() {
+      
     const { movies, user } = this.state;
     return (
         
       <Router>
-      <button onClick={() => { this.onLoggedOut() }}>Logout</button>
+      <NavBar/>
+      {/* <button onClick={() => { this.onLoggedOut() }}>Logout</button> */}
         <Row className="main-view justify-content-md-center">
           <Route exact path="/" render={() => {
             if (!user) return <Col>

@@ -10,9 +10,12 @@ import { Link } from "react-router-dom";
 export class MovieView extends React.Component{
 
     render() {
+      
         const {movie, onBackClick} = this.props;
 
         return (
+
+          
           <Card>
             <div className = "movie-view">
                   <div className = "movie-poster">
