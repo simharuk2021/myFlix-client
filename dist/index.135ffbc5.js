@@ -22114,7 +22114,7 @@ class MainView extends _reactDefault.default.Component {
                 lineNumber: 85
             },
             __self: this
-        }, "React-Bootstrap"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Navbar.Toggle, {
+        }, "Menu"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Navbar.Toggle, {
             "aria-controls": "responsive-navbar-nav",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
@@ -29393,110 +29393,150 @@ class DirectorView extends _reactDefault.default.Component {
     //     componentWillUnmount() {
     //     document.removeEventListener('keypress', this.keypressCallback);
     //   }
+    constructor(){
+        super();
+        //State is initiliased to null
+        this.state = {
+            director: null
+        };
+    }
+    getDirector(token) {
+        //     axios.get(`https://my-movies-souperapp.herokuapp.com/directors/${this.props.director.Name}`, 
+        //     {
+        //     headers: {Authorization: `Bearer ${token}`}
+        //     })
+        // .then (response => 
+        //     {
+        //     //assign the result to the state
+        //     this.setState
+        //         ({
+        //         director: response.data
+        //         });
+        //         console.log(this.state);
+        //     })
+        // .catch(function (error) 
+        //     {
+        //     console.log(error);
+        //     });
+        this.setState({
+            director: {
+                "_id": "6137420e6af4f5693de54a43",
+                "Name": "Jonathan Frakes",
+                "Bio": "Jonathan Scott Frakes was born on August 19, 1952 in Bellefonte, in central Pennsylvania. He is the son of Doris J. (Yingling) and Dr. James R. Frakes, a professor. His parents moved with Jonathan and his younger brother Daniel to Bethlehem in eastern Pennsylvania. There, his father taught English at Lehigh University, where he held the Fairchild chair in American Literature until his passing in 2002. Frakes is of German, and some English, ancestry. Jonathan also stars in the Star Trek Series as number one for Patrick Stewart's character Picard",
+                "Birth": "1952",
+                "Death": ""
+            }
+        });
+    }
+    componentDidMount() {
+        let accessToken = localStorage.getItem('token');
+        if (accessToken !== null) this.getDirector(accessToken);
+    }
     render() {
-        const { director , onBackClick  } = this.props;
-        console.log(director);
+        const { onBackClick  } = this.props;
+        const director = this.state.director;
+        console.log(this.state.director);
         return(/*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default, {
             className: "director-view",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\director-view\\director-view.jsx",
-                lineNumber: 25
+                lineNumber: 71
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Header, {
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\director-view\\director-view.jsx",
-                lineNumber: 26
+                lineNumber: 72
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "director-name",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\director-view\\director-view.jsx",
-                lineNumber: 27
+                lineNumber: 73
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "label",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\director-view\\director-view.jsx",
-                lineNumber: 28
+                lineNumber: 74
             },
             __self: this
         }, "Name: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "value",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\director-view\\director-view.jsx",
-                lineNumber: 29
+                lineNumber: 75
             },
             __self: this
         }, director.Name))), /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Body, {
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\director-view\\director-view.jsx",
-                lineNumber: 32
+                lineNumber: 78
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "director-bio",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\director-view\\director-view.jsx",
-                lineNumber: 33
+                lineNumber: 79
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "label",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\director-view\\director-view.jsx",
-                lineNumber: 34
+                lineNumber: 80
             },
             __self: this
         }, "Bio: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "value",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\director-view\\director-view.jsx",
-                lineNumber: 35
+                lineNumber: 81
             },
             __self: this
         }, director.Bio)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "director-birth-year",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\director-view\\director-view.jsx",
-                lineNumber: 37
+                lineNumber: 83
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "label",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\director-view\\director-view.jsx",
-                lineNumber: 38
+                lineNumber: 84
             },
             __self: this
         }, "Birth Year: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "value",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\director-view\\director-view.jsx",
-                lineNumber: 39
+                lineNumber: 85
             },
             __self: this
         }, director.Birth)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "director-death-year",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\director-view\\director-view.jsx",
-                lineNumber: 41
+                lineNumber: 87
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "label",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\director-view\\director-view.jsx",
-                lineNumber: 42
+                lineNumber: 88
             },
             __self: this
         }, "Death Year: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "value",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\director-view\\director-view.jsx",
-                lineNumber: 43
+                lineNumber: 89
             },
             __self: this
         }, director.Death)), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
@@ -29506,7 +29546,7 @@ class DirectorView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\director-view\\director-view.jsx",
-                lineNumber: 45
+                lineNumber: 91
             },
             __self: this
         }, "Back"))));
@@ -29515,9 +29555,7 @@ class DirectorView extends _reactDefault.default.Component {
 DirectorView.propTypes = {
     director: _propTypes.PropTypes.shape({
         Name: _propTypes.PropTypes.string.isRequired,
-        Bio: _propTypes.PropTypes.string.isRequired,
-        Birth: _propTypes.PropTypes.string.isRequired,
-        Death: _propTypes.PropTypes.string.isRequired
+        Bio: _propTypes.PropTypes.string.isRequired
     }).isRequired
 };
 exports.default = DirectorView;

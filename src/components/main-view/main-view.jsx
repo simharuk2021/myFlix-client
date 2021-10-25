@@ -4,7 +4,7 @@ import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
 import {LoginView} from '../login-view/login-view';
 import {MovieCard } from '../movie-card/movie-card';
 import {MovieView} from '../movie-view/movie-view';
-import {ProfileView} from '../profile-view/profile-view'
+import {ProfileView} from '../profile-view/profile-view';
 import {RegistrationView} from '../registration-view/registration-view';
 import {DirectorView} from '../director-view/director-view';
 import {GenreView} from '../genre-view/genre-view';
@@ -82,7 +82,7 @@ export class MainView extends React.Component
       <Router>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
   <Container>
-  <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+  <Navbar.Brand href="#home">Menu</Navbar.Brand>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="me-auto">
