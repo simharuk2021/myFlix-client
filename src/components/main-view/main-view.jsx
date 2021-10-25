@@ -4,11 +4,12 @@ import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
 import {LoginView} from '../login-view/login-view';
 import {MovieCard } from '../movie-card/movie-card';
 import {MovieView} from '../movie-view/movie-view';
+import {ProfileView} from '../profile-view/profile-view'
 import {RegistrationView} from '../registration-view/registration-view';
 import {DirectorView} from '../director-view/director-view';
 import {GenreView} from '../genre-view/genre-view';
-// import Container from 'react-bootstrap/Container';
-import {NavBar} from '../nav-bar/nav-bar';
+import Container from 'react-bootstrap/Container';
+import { Navbar, Nav, } from 'react-bootstrap';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './main-view.scss'
@@ -60,21 +61,6 @@ export class MainView extends React.Component
 
     }
 
-//below code invokes a function which updates the state of selectedMovie to the specific movie 
-    // setSelectedMovie(newSelectedMovie) 
-    // {this.setState(
-    //     {selectedMovie: newSelectedMovie,
-    //     });
-    // }
-
-//the function updates the user property to the specific user
-
-    // onRegistration(registered) 
-    // {this.setState(
-    //     {registered,
-    //     });
-    // }
-
     onLoggedIn(authData) 
     {console.log(authData);
     this.setState({user: authData.user.Username});
@@ -83,23 +69,10 @@ export class MainView extends React.Component
     this.getMovies(authData.token);
     }
 
-    // toggleRegisterView(e) 
-    // {
-    //     e.preventDefault();
-    //     this.setState(
-    //         {registered: !this.state.registered,
-    //         user: !this.state.user
-    //         });
-    // }
-
     onLoggedOut() 
-        {localStorage.removeItem('token');
-        localStorage.removeItem('user');
-        this.setState(
-            {
-        user: null
-            });
-        }
+        {localStorage.clear();
+        window.open("/", "_self");
+        };
 
     render() {
       
@@ -107,7 +80,22 @@ export class MainView extends React.Component
     return (
         
       <Router>
-      <NavBar/>
+      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+  <Container>
+  <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+  <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+  <Navbar.Collapse id="responsive-navbar-nav">
+    <Nav className="me-auto">
+      <Nav.Link to={"/"}>Movies</Nav.Link>
+      <Nav.Link to = {"/profile"}>Profile</Nav.Link>
+      </Nav>
+    <Nav>
+      <Nav.Link to={"/"} onClick={this.onLoggedOut}>Log Out</Nav.Link>
+    </Nav>
+  </Navbar.Collapse>
+  </Container>
+</Navbar>
+
       {/* <button onClick={() => { this.onLoggedOut() }}>Logout</button> */}
         <Row className="main-view justify-content-md-center">
           <Route exact path="/" render={() => {
@@ -125,6 +113,13 @@ export class MainView extends React.Component
             if (user) return <Redirect to="/" />
             return <Col>
               <RegistrationView />
+            </Col>
+          }} />
+
+           <Route path="/profile" render={() => {
+            if (user) return <Redirect to="/" />
+            return <Col>
+              <ProfileView />
             </Col>
           }} />
 

@@ -18,7 +18,8 @@ export class DirectorView extends React.Component{
 //   }
 
     render() {
-        const {director, movie, onBackClick} = this.props;
+        const {director, onBackClick} = this.props;
+        console.log(director)
 
         return (
            <Card className = "director-view">
@@ -44,6 +45,7 @@ export class DirectorView extends React.Component{
             <Button variant ="danger" onClick={() => {onBackClick(null);}}>Back</Button>
             </Card.Body>
             </Card>
+            
         );       
     }
 }
