@@ -25,7 +25,8 @@ export class MainView extends React.Component
             movies: [],
             selectedMovie: null,
             user: null,
-            registered:null
+            registered:null,
+            director:null
         };
     }
 
@@ -48,6 +49,33 @@ export class MainView extends React.Component
         console.log(error);
         });
     }
+
+    getDirectors(token) 
+    {
+        axios.get('https://my-movies-souperapp.herokuapp.com/directors', 
+        {
+        headers: {Authorization: `Bearer ${token}`}
+        })
+    .then (response => 
+        {
+        //assign the result to the state
+        this.setState
+            ({
+            directors: response.data
+            });
+        })
+    .catch(function (error) 
+        {
+        console.log(error);
+        });
+    }
+
+    componentDidUpdate()
+    {let accessToken=localStorage.getItem('token');
+            this.getDirectors(accessToken);
+        }
+
+    
 
 //code below integrates with the API information hosted by heroku (linked to MongoDB Atlas)
     componentDidMount()
@@ -116,12 +144,34 @@ export class MainView extends React.Component
             </Col>
           }} />
 
-           <Route path="/profile" render={() => {
-            if (user) return <Redirect to="/" />
-            return <Col>
-              <ProfileView />
-            </Col>
-          }} />
+            <Route  path="/profile" render={() => {
+              if ( !user ) 
+              return (
+                <Col>
+                  <LoginView onLoggedIn={ (user) => this.onLoggedIn(user) } />
+                </Col>
+              );
+              if (movies.length === 0) return <div className="main-view" />;
+              return (
+              <>
+              <Col>
+                <ProfileView username={username} password={password} email={email} birthday={birthday} favoriteMovies={favoriteMovies} movies={movies} onBackClick={() => history.goBack()} removeMovie={(_id) => this.removeFromFavorites(_id)} />
+              </Col>
+              </>)
+            }} /> 
+
+            <Route exact path="/editProfile" render={({ history }) => {
+                if (!user)
+                  return 
+                  <Col md={6}>
+                      <LoginView onLoggedIn={ (user) => this.onLoggedIn(user) } />
+                </Col>
+                
+                if (movies.length === 0) return <div className="main-view" />;
+                return <Col md={8}>
+                    <Edit username={username} password={password} email={email} birthday={birthday} onBackClick={() => history.goBack()} />
+                </Col>
+            v}} /> 
 
           <Route path="/movies/:movieId" render={({ match, history }) => {
             if (!user) return <Col>
