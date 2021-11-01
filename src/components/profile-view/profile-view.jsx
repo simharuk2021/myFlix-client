@@ -1,61 +1,91 @@
-import React from 'react';
-import Button from 'react-bootstrap/Button';
-import './profile-view.scss';
-import Card from'react-bootstrap/Card';
+import React from "react";
+import axios from "axios";
+import {  Form,  Button,  Row,  Col,  Card, Container, } from "react-bootstrap";
+import {setState} from 'react';
 import { PropTypes } from 'prop-types';
-export class ProfileView extends React.Component{
 
-// keypressCallback(event){
-//     console.log(event.key);
-// }
+import { Link } from "react-router-dom";
 
-// componentDidMount() {
-//     document.addEventListener('keypress', this.keypressCallback);
-//   }
+export class ProfileView extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      Username: null,
+      Password: null,
+      Email: null,
+      Birthday: null,
+      FavoriteMovies: [],
+    };
+  }
 
-//     componentWillUnmount() {
-//     document.removeEventListener('keypress', this.keypressCallback);
-//   }
-
-    render() {
-        const {user, username, email, password, birthday, favoritemovies, onBackClick} = this.props;
-
-        return (
-           <Card className = "profile-view">
-            <Card.Header>
-            <div className = "profile-name">
-            <span className = "label">Username: </span>
-            <span className = "value">{user.Name}</span>
-            </div>
-            </Card.Header>
-            <Card.Body>
-            <div className = "Email">
-            <span className = "label">Password: </span>
-            <span className = "value">{user.Password}</span>
-            </div>
-            <div className = "Email">
-            <span className = "label">Email: </span>
-            <span className = "value">{user.Email}</span>
-            </div>
-            <div className = "Email">
-            <span className = "label">Birthday: </span>
-            <span className = "value">{user.Birthday}</span>
-            </div>
-            
-            <Button variant ="danger" onClick={() => {onBackClick(null);}}>Back</Button>
-            </Card.Body>
-            </Card>
-        );       
+  componentDidMount() {
+    let accessToken = localStorage.getItem("token");
+    if (accessToken !== null) {
+      this.getUser(accessToken);
     }
+  }
+
+  getUser(token) {
+    const username = localStorage.getItem("user");
+    axios
+      .get(`"https://my-movies-souperapp.herokuapp.com/users/${username}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        this.setState({
+          Username: response.data.Username,
+          Password: response.data.Password,
+          Email: response.data.Email,
+          Birthday: response.data.Birthday,
+          FavoriteMovies: response.data.FavoriteMovies,
+        });
+        console.log(username);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+      }
+  
+
+  render() {
+   const {user, onBackClick} = this.props;
+   console.log(user);
+
+    return (
+      <Container>
+      
+       <Card className = "profile-view">
+        <Card.Header>
+        <div className = "username">
+        <span className = "label">Username: </span>
+        <span className = "value">{this.state.Username}</span>
+        </div>
+        </Card.Header>
+        <Card.Body>
+        <div className = "password">
+        <span className = "label">Password: </span>
+        <span className = "value">{this.state.Password}</span>
+        </div>
+        <div className = "Email">
+        <span className = "label">Email: </span>
+        <span className = "value">{this.state.Email}</span>
+        </div>
+        <div className = "Birthday">
+        <span className = "label">Birthday: </span>
+        <span className = "value">{this.state.Birthday}</span>
+        </div>
+        <Button variant ="danger" onClick={() => {onBackClick(null);}}>Back</Button>
+        </Card.Body>
+        </Card>
+        </Container>
+    );       
 }
-
+}
 ProfileView.propTypes = {
-    profile: PropTypes.shape({
-        Username:PropTypes.string.isRequired,
-        Password:PropTypes.string.isRequired,
-        Email:PropTypes.string.isRequired,
-        Birthday: PropTypes.string.isRequired,
-    }).isRequired
+  profile: PropTypes.shape({
+    Username: PropTypes.string.isRequired,
+    Password: PropTypes.string.isRequired,
+    Email: PropTypes.string.isRequired,
+    // Birthday: PropTypes.string.isRequired
+  })
 };
-
-export default ProfileView;

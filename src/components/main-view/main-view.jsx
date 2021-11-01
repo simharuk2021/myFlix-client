@@ -78,23 +78,21 @@ export class MainView extends React.Component
       
     const { movies, user } = this.state;
     return (
-        
+        <Container>
       <Router>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-  <Container>
-  <Navbar.Brand href="#home">Menu</Navbar.Brand>
+    <Navbar.Brand href="#home">Menu</Navbar.Brand>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="me-auto">
-      <Nav.Link to={"/"}>Movies</Nav.Link>
-      <Nav.Link to = {"/profile"}>Profile</Nav.Link>
+      <Nav.Link href = "/">Movies</Nav.Link>
+      <Nav.Link href = "/profile">Profile</Nav.Link>
       </Nav>
     <Nav>
       <Nav.Link to={"/"} onClick={this.onLoggedOut}>Log Out</Nav.Link>
     </Nav>
   </Navbar.Collapse>
-  </Container>
-</Navbar>
+  </Navbar>
 
       {/* <button onClick={() => { this.onLoggedOut() }}>Logout</button> */}
         <Row className="main-view justify-content-md-center">
@@ -116,12 +114,12 @@ export class MainView extends React.Component
             </Col>
           }} />
 
-           <Route path="/profile" render={() => {
-            if (user) return <Redirect to="/" />
-            return <Col>
-              <ProfileView />
-            </Col>
-          }} />
+        <Route path="/profile" render={({ history }) => {
+          
+          if (movies.length === 0) return <div className="main-view"></div>;
+
+          return <ProfileView user={user} onBackClick={() => history.goBack()} />
+        }} />
 
           <Route path="/movies/:movieId" render={({ match, history }) => {
             if (!user) return <Col>
@@ -156,6 +154,7 @@ export class MainView extends React.Component
           } />
         </Row>
       </Router>
+      </Container>
     );
   }
 }

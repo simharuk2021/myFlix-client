@@ -2,23 +2,12 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import './genre-view.scss';
 import Card from'react-bootstrap/Card';
-import { PropTypes } from 'prop-types';
+import  PropTypes from 'prop-types';
 export class GenreView extends React.Component{
 
-// keypressCallback(event){
-//     console.log(event.key);
-// }
-
-// componentDidMount() {
-//     document.addEventListener('keypress', this.keypressCallback);
-//   }
-
-//     componentWillUnmount() {
-//     document.removeEventListener('keypress', this.keypressCallback);
-//   }
-
     render() {
-        const {genre, movie, onBackClick} = this.props;
+        const {genre, onBackClick} = this.props;
+        console.log(genre);
 
         return (
            <Card className = "genre-view">
