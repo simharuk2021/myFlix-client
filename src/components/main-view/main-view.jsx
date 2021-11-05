@@ -5,7 +5,7 @@ import {LoginView} from '../login-view/login-view';
 import {MovieCard } from '../movie-card/movie-card';
 import {MovieView} from '../movie-view/movie-view';
 import {ProfileView} from '../profile-view/profile-view';
-import {UpdateView} from '../update-view/update-view';
+import {UpdateView} from '../update-view/update-view'
 import {RegistrationView} from '../registration-view/registration-view';
 import {DirectorView} from '../director-view/director-view';
 import {GenreView} from '../genre-view/genre-view';
@@ -82,7 +82,9 @@ export class MainView extends React.Component
         <Container>
       <Router>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-    <Navbar.Brand href="#home">Menu</Navbar.Brand>
+      <Navbar.Brand>User: 
+        <span className = "sign-in"> {this.state.user} </span>
+      </Navbar.Brand>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="me-auto">

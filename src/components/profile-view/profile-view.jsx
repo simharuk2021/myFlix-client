@@ -3,8 +3,8 @@ import axios from "axios";
 import {  Form,  Button,  Row,  Col,  Card, Container, } from "react-bootstrap";
 import {setState} from 'react';
 import { PropTypes } from 'prop-types';
-
 import { Link } from "react-router-dom";
+import { MovieCard } from "../movie-card/movie-card";
 
 export class ProfileView extends React.Component {
   constructor() {
@@ -76,10 +76,10 @@ export class ProfileView extends React.Component {
         <span className = "label">Birthday: </span>
         <span className = "value">{this.state.Birthday}</span>
         </div>
-        {/* <div className = "Favorite-Movies">
+        <div className = "Favorite-Movies">
         <span className = "label">Favorite Movies: </span>
-        <span className = "value">{this.state[FavoriteMovies]}</span>
-        </div> */}
+        <span className = "value">{this.state.FavoriteMovies[MovieCard._id]}</span>
+        </div>
         
         <Button variant ="danger" onClick={() => {onBackClick(null);}}>Back</Button>
         <span>

@@ -7,10 +7,9 @@ export class DirectorView extends React.Component{
 
     render() {
         const {director, onBackClick} = this.props;
-        // const director =this.state.director;
-        console.log(director);
+         console.log(director);
 
-        return (
+         return (
            <Card className = "director-view">
             <Card.Header>
             <div className = "director-name">

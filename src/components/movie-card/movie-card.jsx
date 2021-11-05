@@ -4,10 +4,34 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import './movie-card.scss';
 import {Link} from 'react-router-dom';
+import axios from'axios';
 
 
 
 export class MovieCard extends React.Component{
+
+  
+  addMovie(token) 
+  {
+      const username = localStorage.getItem("user"); 
+      axios.post(`https://my-movies-souperapp.herokuapp.com/users/${username}/FavoriteMovies/${Movie.id}`, 
+      {
+      headers: {Authorization: `Bearer ${token}`}
+      })
+  .then (response => 
+      {
+      //assign the result to the state
+      this.setState
+          ({
+          movies: response.data
+          });
+      })
+  .catch(function (error) 
+      {
+      console.log(error);
+      });
+  }
+
     render() {
         const {movie} = this.props;
         return (
@@ -18,6 +42,8 @@ export class MovieCard extends React.Component{
               <Card.Text className="cardText">{movie.Description}</Card.Text>
                 <Link to={`/movies/${movie._id}`}>
                   <Button variant = 'danger'>Open</Button>
+                  <br></br>
+                  <Button variant = 'success'onClick={() => this.addMovie()}>Add to Favorites</Button>
                 </Link>
             </Card.Body>
           </Card>
