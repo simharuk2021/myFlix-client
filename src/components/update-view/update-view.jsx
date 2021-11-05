@@ -2,11 +2,12 @@ import React from "react";
 import axios from "axios";
 import {  Form,  Button,  Row,  Col,  Card, Container, } from "react-bootstrap";
 import {setState} from 'react';
+import {ProfileView} from '../profile-view/profile-view'
 import { PropTypes } from 'prop-types';
 
 import { Link } from "react-router-dom";
 
-export class ProfileView extends React.Component {
+export class UpdateView extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -56,7 +57,7 @@ export class ProfileView extends React.Component {
     return (
       <Container>
       
-       <Card className = "profile-view">
+       <Card className = "update-view">
         <Card.Header>
         <div className = "username">
         <span className = "label">Username: </span>
@@ -83,7 +84,7 @@ export class ProfileView extends React.Component {
         
         <Button variant ="danger" onClick={() => {onBackClick(null);}}>Back</Button>
         <span>
-        <Button href = "/update"variant ="primary">Update User Details</Button>
+        <Button href = "/update" variant ="primary">Update User Details</Button>
         </span>
         </Card.Body>
         </Card>
@@ -100,3 +101,4 @@ ProfileView.propTypes = {
     FavoriteMovies: PropTypes.array
   })
 };
+export default UpdateView;
