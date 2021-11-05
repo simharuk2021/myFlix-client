@@ -26,9 +26,26 @@ export class MainView extends React.Component
             movies: [],
             selectedMovie: null,
             user: null,
+            userObject: null,
             registered:null
         };
     }
+    getUser(token) {
+      const username = localStorage.getItem("user");
+      axios
+        .get(`https://my-movies-souperapp.herokuapp.com/users/${username}`, 
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+        )
+        .then((response) => {
+        this.setState({userObject: response.data})
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+        }
+
 
     getMovies(token) 
     {
@@ -58,6 +75,7 @@ export class MainView extends React.Component
         ({user: localStorage.getItem('user')
         });
         this.getMovies(accessToken);
+        this.getUser(accessToken);
         }
 
     }
@@ -128,7 +146,7 @@ export class MainView extends React.Component
           
           // if (movies.length === 0) return <div className="main-view"></div>;
 
-          return <UpdateView user={user} onBackClick={() => history.goBack()} />
+          return <UpdateView user={this.state.userObject} onBackClick={() => history.goBack()} />
         }} />
 
           <Route path="/movies/:movieId" render={({ match, history }) => {

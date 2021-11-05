@@ -61,11 +61,10 @@ export function RegistrationView (props){
 
     <Button variant = "danger" type ="submit" onClick={handleSubmit}>Register</Button>
     <p>Have an account? Login here</p>
-                  <Link to="/">
-                    <Button variant="primary" type="button">
-                      Login
-                    </Button>
-                    </Link>
+    <Link to="/">
+      <Button variant="primary" type="button">Login
+      </Button>
+    </Link>
     </Form>
     );
    }

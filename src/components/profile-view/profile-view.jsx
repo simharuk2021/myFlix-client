@@ -41,7 +41,6 @@ export class ProfileView extends React.Component {
           Birthday: response.data.Birthday,
           FavoriteMovies: response.data.FavoriteMovies,
         });
-        console.log(username);
       })
       .catch(function (error) {
         console.log(error);
@@ -53,10 +52,9 @@ export class ProfileView extends React.Component {
    const {user, onBackClick} = this.props;
    console.log(user);
 
-    return (
+    return ( 
       <Container>
-      
-       <Card className = "profile-view">
+        <Card className = "profile-view">
         <Card.Header>
         <div className = "username">
         <span className = "label">Username: </span>
