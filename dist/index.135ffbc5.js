@@ -40335,23 +40335,18 @@ var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _reactRouterDom = require("react-router-dom");
 var _loginView = require("../login-view/login-view");
 var _s = $RefreshSig$();
-function UpdateView(props) {
+function UpdateView(user) {
     _s();
     // const Username=props.user.Username;
-    const [userName, setUsername] = _react.useState('');
-    const [password, setPassword] = _react.useState('');
-    const [email, setEmail] = _react.useState('');
-    const [birthday, setBirthday] = _react.useState('');
-    // setUsername(props.user.Username);
-    // setPassword(props.user.Password);
-    // setEmail(props.user.Email);
-    // setBirthday(props.user.Birthday);
-    console.log(props.user);
+    const [userName, setUsername] = _react.useState(user.Username);
+    const [password, setPassword] = _react.useState(localStorage.getItem('password'));
+    const [email, setEmail] = _react.useState(user.Email);
+    const [birthday, setBirthday] = _react.useState(user.birthday);
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
-    const handleSubmit = (e)=>{
+    const handleUpdate = (e)=>{
         e.preventDefault();
-        console.log(username, password, email, birthday);
+        console.log(user);
         _axiosDefault.default.put(`https://my-movies-souperapp.herokuapp.com/users/${username}`, {
             Username: userName,
             Password: password,
@@ -40364,30 +40359,28 @@ function UpdateView(props) {
         }).then((response)=>{
             const data = response.data;
             console.log(data);
-            // setUsername(data.username)
             alert('user has been updated');
         }).catch((e1)=>{
             console.log('error updating the user');
-        // console.log(userName, password, email, birthday)
         });
     };
     return(/*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default, {
         __source: {
             fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\update-view\\update-view.jsx",
-            lineNumber: 53
+            lineNumber: 46
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "formUsername",
         __source: {
             fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\update-view\\update-view.jsx",
-            lineNumber: 54
+            lineNumber: 47
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         __source: {
             fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\update-view\\update-view.jsx",
-            lineNumber: 55
+            lineNumber: 48
         },
         __self: this
     }, "Username: "), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
@@ -40396,20 +40389,20 @@ function UpdateView(props) {
         ,
         __source: {
             fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\update-view\\update-view.jsx",
-            lineNumber: 56
+            lineNumber: 49
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "pasword",
         __source: {
             fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\update-view\\update-view.jsx",
-            lineNumber: 59
+            lineNumber: 52
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         __source: {
             fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\update-view\\update-view.jsx",
-            lineNumber: 60
+            lineNumber: 53
         },
         __self: this
     }, "Password:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
@@ -40418,20 +40411,20 @@ function UpdateView(props) {
         ,
         __source: {
             fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\update-view\\update-view.jsx",
-            lineNumber: 61
+            lineNumber: 54
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "email",
         __source: {
             fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\update-view\\update-view.jsx",
-            lineNumber: 64
+            lineNumber: 57
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         __source: {
             fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\update-view\\update-view.jsx",
-            lineNumber: 65
+            lineNumber: 58
         },
         __self: this
     }, "Email: "), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
@@ -40440,20 +40433,20 @@ function UpdateView(props) {
         ,
         __source: {
             fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\update-view\\update-view.jsx",
-            lineNumber: 66
+            lineNumber: 59
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "birthday",
         __source: {
             fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\update-view\\update-view.jsx",
-            lineNumber: 69
+            lineNumber: 62
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         __source: {
             fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\update-view\\update-view.jsx",
-            lineNumber: 70
+            lineNumber: 63
         },
         __self: this
     }, "Birthday:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
@@ -40462,28 +40455,28 @@ function UpdateView(props) {
         ,
         __source: {
             fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\update-view\\update-view.jsx",
-            lineNumber: 71
+            lineNumber: 64
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
         variant: "danger",
         type: "submit",
-        onClick: handleSubmit,
+        onClick: handleUpdate,
         __source: {
             fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\update-view\\update-view.jsx",
-            lineNumber: 74
+            lineNumber: 67
         },
         __self: this
     }, "Update")));
 }
-_s(UpdateView, "/qP01R+Runsl2hS6aBJ72z1oZBM=");
+_s(UpdateView, "SI7ywhyxa3M9BWSO6cE9MGMLL14=");
 _c = UpdateView;
 UpdateView.propTypes = {
     update: _propTypesDefault.default.shape({
-        username: _propTypesDefault.default.string,
-        password: _propTypesDefault.default.string,
-        email: _propTypesDefault.default.string,
-        birthday: _propTypesDefault.default.string
+        username: _propTypesDefault.default.string.isRequired,
+        password: _propTypesDefault.default.string.isRequired,
+        email: _propTypesDefault.default.string.isRequired,
+        birthday: _propTypesDefault.default.string.isRequired
     })
 };
 var _c;
@@ -40494,6 +40487,6 @@ $RefreshReg$(_c, "UpdateView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","axios":"7rA65","prop-types":"4dfy5","react-router-dom":"1PMSK","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f","react-bootstrap/Form":"6A5ko","react-bootstrap/Button":"1ru0l","../login-view/login-view":"2B7mO"}]},["1j6wU","56YmB","67vt4"], "67vt4", "parcelRequire279c")
+},{"react":"3b2NM","react-bootstrap/Form":"6A5ko","react-bootstrap/Button":"1ru0l","prop-types":"4dfy5","axios":"7rA65","react-router-dom":"1PMSK","../login-view/login-view":"2B7mO","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}]},["1j6wU","56YmB","67vt4"], "67vt4", "parcelRequire279c")
 
 //# sourceMappingURL=index.135ffbc5.js.map
