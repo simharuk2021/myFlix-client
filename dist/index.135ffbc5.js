@@ -22237,6 +22237,7 @@ class MainView extends _reactDefault.default.Component {
                 }));
                 return(/*#__PURE__*/ _reactDefault.default.createElement(_profileView.ProfileView, {
                     user: user,
+                    movies: movies,
                     onBackClick: ()=>history.goBack()
                 }));
             },
@@ -29111,99 +29112,42 @@ class ProfileView extends _reactDefault.default.Component {
             console.log(error);
         });
     }
+    removeFavorite(movie) {
+        let token = localStorage.getItem('token');
+        let url = 'https://my-movies-souperapp.herokuapp.com/users/' + localStorage.getItem('user') + '/FavoriteMovies/' + movie._id;
+        _axiosDefault.default.delete(url, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response)=>{
+            alert("Movie was removed");
+            this.componentDidMount();
+        });
+    }
     render() {
         const { user , onBackClick  } = this.props;
         console.log(user);
         return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Container, {
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 56
+                lineNumber: 70
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card, {
             className: "profile-view",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 57
+                lineNumber: 71
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Header, {
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 58
+                lineNumber: 72
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "username",
-            __source: {
-                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 59
-            },
-            __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
-            className: "label",
-            __source: {
-                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 60
-            },
-            __self: this
-        }, "Username: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
-            className: "value",
-            __source: {
-                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 61
-            },
-            __self: this
-        }, this.state.Username))), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Body, {
-            __source: {
-                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 64
-            },
-            __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
-            className: "Password",
-            __source: {
-                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 65
-            },
-            __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
-            className: "label",
-            __source: {
-                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 66
-            },
-            __self: this
-        }, "Password: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
-            className: "value",
-            __source: {
-                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 67
-            },
-            __self: this
-        }, "******")), /*#__PURE__*/ _reactDefault.default.createElement("div", {
-            className: "Email",
-            __source: {
-                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 69
-            },
-            __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
-            className: "label",
-            __source: {
-                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 70
-            },
-            __self: this
-        }, "Email: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
-            className: "value",
-            __source: {
-                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 71
-            },
-            __self: this
-        }, this.state.Email)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
-            className: "Birthday",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
                 lineNumber: 73
@@ -29216,48 +29160,96 @@ class ProfileView extends _reactDefault.default.Component {
                 lineNumber: 74
             },
             __self: this
-        }, "Birthday: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+        }, "Username: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "value",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
                 lineNumber: 75
             },
             __self: this
-        }, this.state.Birthday)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
-            className: "Favorite-Movies",
+        }, this.state.Username))), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Body, {
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 77
+                lineNumber: 78
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "Password",
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 79
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "label",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 78
+                lineNumber: 80
             },
             __self: this
-        }, "Favorite Movies: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+        }, "Password: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "value",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 79
+                lineNumber: 81
             },
             __self: this
-        }, this.state.FavoriteMovies[_movieCard.MovieCard._id])), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
+        }, "******")), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "Email",
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 83
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "label",
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 84
+            },
+            __self: this
+        }, "Email: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "value",
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 85
+            },
+            __self: this
+        }, this.state.Email)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "Birthday",
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 87
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "label",
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 88
+            },
+            __self: this
+        }, "Birthday: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "value",
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 89
+            },
+            __self: this
+        }, this.state.Birthday)), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
             variant: "danger",
             onClick: ()=>{
                 onBackClick(null);
             },
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 82
+                lineNumber: 92
             },
             __self: this
         }, "Back"), /*#__PURE__*/ _reactDefault.default.createElement("span", {
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 83
+                lineNumber: 93
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
@@ -29265,10 +29257,60 @@ class ProfileView extends _reactDefault.default.Component {
             variant: "primary",
             __source: {
                 fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 84
+                lineNumber: 94
             },
             __self: this
-        }, "Update User Details"))))));
+        }, "Update User Details")))), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card, {
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 98
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "Favorite-Movies",
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 99
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "label",
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 100
+            },
+            __self: this
+        }, "Favorite Movies: "), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "value",
+            __source: {
+                fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 101
+            },
+            __self: this
+        }, this.state.FavoriteMovies.map((movie)=>{
+            return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+                __source: {
+                    fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                    lineNumber: 104
+                },
+                __self: this
+            }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
+                __source: {
+                    fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                    lineNumber: 105
+                },
+                __self: this
+            }, movie.Title), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
+                variant: "dark",
+                onClick: ()=>this.removeFavorite(movie)
+                ,
+                __source: {
+                    fileName: "F:\\Coding\\IMMERSION COURSE\\Achievement 3\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                    lineNumber: 108
+                },
+                __self: this
+            }, "Remove")));
+        }))))));
     }
 }
 ProfileView.propTypes = {
@@ -29277,7 +29319,7 @@ ProfileView.propTypes = {
         Password: _propTypes.PropTypes.string.isRequired,
         Email: _propTypes.PropTypes.string.isRequired,
         Birthday: _propTypes.PropTypes.string.isRequired,
-        FavoriteMovies: _propTypes.PropTypes.array
+        FavoriteMovies: _propTypes.PropTypes.array.isRequired
     })
 };
 
@@ -40385,6 +40427,7 @@ function UpdateView(user) {
         __self: this
     }, "Username: "), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
         type: "text",
+        required: "true",
         onChange: (e)=>setUsername(e.target.value)
         ,
         __source: {
@@ -40407,6 +40450,7 @@ function UpdateView(user) {
         __self: this
     }, "Password:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
         type: "password",
+        required: "true",
         onChange: (e)=>setPassword(e.target.value)
         ,
         __source: {
@@ -40429,6 +40473,7 @@ function UpdateView(user) {
         __self: this
     }, "Email: "), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
         type: "email",
+        required: "true",
         onChange: (e)=>setEmail(e.target.value)
         ,
         __source: {
@@ -40451,6 +40496,7 @@ function UpdateView(user) {
         __self: this
     }, "Birthday:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
         type: "birthday",
+        required: "true",
         onChange: (e)=>setBirthday(e.target.value)
         ,
         __source: {

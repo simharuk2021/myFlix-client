@@ -139,7 +139,7 @@ export class MainView extends React.Component
           
           if (movies.length === 0) return <div className="main-view"></div>;
 
-          return <ProfileView user={user} onBackClick={() => history.goBack()} />
+          return <ProfileView user={user} movies = {movies} onBackClick={() => history.goBack()} />
         }} />
 
         <Route path="/update" render={({ history }) => {

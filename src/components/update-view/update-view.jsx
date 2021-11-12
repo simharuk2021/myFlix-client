@@ -46,22 +46,22 @@ console.log(user);
         <Form>
     <Form.Group controlId = "formUsername">
     <Form.Label>Username: </Form.Label>
-    <Form.Control type = "text" onChange={e => setUsername(e.target.value)}/>    
+    <Form.Control type = "text" required ="true" onChange={e => setUsername(e.target.value)}/>    
     </Form.Group>
 
     <Form.Group controlId = "pasword">
     <Form.Label>Password:</Form.Label>
-     <Form.Control type = "password" onChange={e => setPassword(e.target.value)}/>    
+     <Form.Control type = "password" required="true" onChange={e => setPassword(e.target.value)}/>    
     </Form.Group>
 
     <Form.Group controlId = "email">
     <Form.Label>Email: </Form.Label>
-    <Form.Control type = "email" onChange={e => setEmail(e.target.value)}/>    
+    <Form.Control type = "email" required ="true" onChange={e => setEmail(e.target.value)}/>    
     </Form.Group>
 
     <Form.Group controlId = "birthday">
     <Form.Label>Birthday:</Form.Label>
-    <Form.Control type = "birthday" onChange={e => setBirthday(e.target.value)}/>    
+    <Form.Control type = "birthday" required ="true" onChange={e => setBirthday(e.target.value)}/>    
     </Form.Group>
 
     <Button variant = "danger" type ="submit" onClick={handleUpdate}>Update</Button>
