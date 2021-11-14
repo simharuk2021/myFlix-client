@@ -7,12 +7,29 @@ import Card from'react-bootstrap/Card';
 import Image from'react-bootstrap/Image';
 import { MovieCard } from '../movie-card/movie-card';
 import { Link } from "react-router-dom";
+import axios from'axios';
 export class MovieView extends React.Component{
+
+
+  addFavorite(movie) {
+    let token = localStorage.getItem('token');
+    let url = "https://my-movies-souperapp.herokuapp.com/users/" + localStorage.getItem('user')
+        + "/FavoriteMovies/" + movie._id;
+    axios
+        .post(url, {
+            headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((response) => {
+            alert("Movie was added to favorites");
+            this.componentDidMount();
+        });
+}
 
     render() {
       
         const {movie, onBackClick} = this.props;
 
+      
         return (
 
           
@@ -45,6 +62,7 @@ export class MovieView extends React.Component{
                     </Link>
                   </div>
                     <Button variant ="danger" onClick={() => {onBackClick(null);}} className ="movieBack">Back</Button>
+                    <Button variant="dark" onClick={() => this.addFavorite(movie)}>Add to Favorites</Button>
                 </Card.Body>
             </div>
           </Card>

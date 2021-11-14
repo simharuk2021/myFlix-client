@@ -35,6 +35,7 @@ console.log(user);
     const data = response.data;
     console.log(data);
     alert('user has been updated'); 
+  
   })
     .catch (e => {
     console.log('error updating the user')
