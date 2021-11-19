@@ -4,7 +4,8 @@ import {  Form,  Button,  Row,  Col,  Card, Container, } from "react-bootstrap";
 import {setState} from 'react';
 import { PropTypes } from 'prop-types';
 import { Link } from "react-router-dom";
-import { MovieCard } from "../movie-card/movie-card";
+// import { MovieCard } from "../movie-card/movie-card";
+import './profile-view.scss';
 
 export class ProfileView extends React.Component {
   constructor() {
@@ -95,24 +96,25 @@ export class ProfileView extends React.Component {
         </span>
         </Card.Body>
         </Card>
-        <Card>
+        <Card className="cardFav">
         <div className = "Favorite-Movies">
-        <span className = "label">Favorite Movies: </span>
-        <div className = "value">
+        <Card.Header><span className = "label">Favorite Movies: </span></Card.Header>
+        <Row>
           {this.state.FavoriteMovies.map((movie) => { 
-            return (
-            <div>
-              <div>
+            return (           
+            <Row>
+              <Col xs={2} md={4} lg ={6} xl={12}>
                 {movie.Title}
-              </div>
-              <Button variant="dark" onClick={() => this.removeFavorite(movie)}>Remove</Button>
-            </div>) 
+                <Card.Img src={movie.ImagePath} />
+              <Button variant="dark" onClick={() => this.removeFavorite(movie)}>Click to Remove</Button>
+              </Col>
+            </Row>) 
           }
           )}
-        </div>
+        </Row>
         </div>
         </Card>
-        
+      
         </Container>
         
     );       

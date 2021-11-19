@@ -2,25 +2,30 @@
 //     align-items: center;
 // }
 
-.movieIMG{
-    height:auto;    
-    width: auto;
+.movie-poster{
+    padding-top: 5rem;
     position:relative;
-    left: 25%;
-}
+    left: 40%;
+  }
+
 .movie-title{
     font-size: 120%;
-text-align: center;
+    text-align: center;
 }
+
 .movie-description{
     position: top;
     margin-bottom: 1rem;
 }
 
 .movieBack{
- position:relative;
- bottom:0;
- left: 40%;
- margin-top: 1rem;
- margin-bottom: 1rem;
+    position:relative;
+    bottom:0;
+    left: 40%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.buttons{
+    position:center;
 }

@@ -18,6 +18,7 @@ axios.post('https://my-movies-souperapp.herokuapp.com/login', {
  .then(response => {
     const data = response.data;
 props.onLoggedIn(data);
+alert('login successfull');
  })
  .catch (e => {
     console.log('no such user')

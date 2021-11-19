@@ -99,7 +99,7 @@ export class MainView extends React.Component
     return (
         <Container>
       <Router>
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar fixed="top" collapseOnSelect expand="lg" bg="dark" variant="dark" className="navigationBar">
       <Navbar.Brand>User: 
         <span className = "sign-in"> {this.state.user} </span>
       </Navbar.Brand>
@@ -115,7 +115,6 @@ export class MainView extends React.Component
   </Navbar.Collapse>
   </Navbar>
 
-      {/* <button onClick={() => { this.onLoggedOut() }}>Logout</button> */}
         <Row className="main-view justify-content-md-center">
           <Route exact path="/" render={() => {
             if (!user) return <Col>
@@ -123,7 +122,7 @@ export class MainView extends React.Component
             </Col>
             if (movies.length === 0) return <div className="main-view" />;
             return movies.map(m => (
-              <Col md={3} key={m._id}>
+              <Col xs={8} md={6} lg={4} xl={4} key={m._id}>
                 <MovieCard movie={m} />
               </Col>
             ))
@@ -136,17 +135,12 @@ export class MainView extends React.Component
           }} />
 
         <Route path="/profile" render={({ history }) => {
-          
           if (movies.length === 0) return <div className="main-view"></div>;
-
           return <ProfileView user={user} movies = {movies} onBackClick={() => history.goBack()} />
         }} />
 
-        <Route path="/update" render={({ history }) => {
-          
-          // if (movies.length === 0) return <div className="main-view"></div>;
-
-          return <UpdateView user={this.state.userObject} onBackClick={() => history.goBack()} />
+        <Route path="/update" render={({ history }) => {  
+         return <UpdateView user={this.state.userObject} onBackClick={() => history.goBack()} />
         }} />
 
           <Route path="/movies/:movieId" render={({ match, history }) => {
@@ -186,3 +180,4 @@ export class MainView extends React.Component
     );
   }
 }
+

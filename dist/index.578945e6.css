@@ -1,8 +1,8 @@
 
 .cardBorder {
   width: 17rem;
-  height: 55rem;
-  padding: 0;
+  height: 50rem;
+  margin-top: 60px;
 }
 
 .cardIMG {
@@ -15,6 +15,7 @@
 
 .cardText {
   text-align: center;
+  margin-top: 1rem;
 }
 
 .cardBtn {
@@ -22,13 +23,11 @@
   bottom: 0;
   margin-bottom: 1rem;
   left: 40%;
-  margin-top: 1rem;
 }
-.movieIMG {
-  height: auto;
-  width: auto;
+.movie-poster {
+  padding-top: 5rem;
   position: relative;
-  left: 25%;
+  left: 40%;
 }
 
 .movie-title {
@@ -47,6 +46,10 @@
   left: 40%;
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+
+.buttons {
+  position: center;
 }
 
 

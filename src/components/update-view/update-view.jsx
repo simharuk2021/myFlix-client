@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import {Link} from "react-router-dom";
 import {LoginView} from "../login-view/login-view";
+import './update-view.scss';
 
 export function UpdateView (user){
     // const Username=props.user.Username;
@@ -42,9 +43,25 @@ console.log(user);
   });
 };
 
+const handleDeregister = () => {
+  const token = localStorage.getItem('token');
+  console.log('deregister request submitted');
+  axios.delete(`https://my-movies-souperapp.herokuapp.com/users/${username}`,
+  {headers: { Authorization: `Bearer ${token}`}}
+  )
+  .then(res => {
+    console.log(res.data);
+    alert('User deregistered successfully');
+    localStorage.clear();
+      window.open("/", "_self");
+          })
+  .catch(err => {
+    console.log(err, 'Deregistration did not succeed');
+  })
+}
     
     return (
-        <Form>
+        <Form className='registrationForm'>
     <Form.Group controlId = "formUsername">
     <Form.Label>Username: </Form.Label>
     <Form.Control type = "text" required ="true" onChange={e => setUsername(e.target.value)}/>    
@@ -65,7 +82,8 @@ console.log(user);
     <Form.Control type = "birthday" required ="true" onChange={e => setBirthday(e.target.value)}/>    
     </Form.Group>
 
-    <Button variant = "danger" type ="submit" onClick={handleUpdate}>Update</Button>
+    <Button variant = "primary" type ="submit" onClick={handleUpdate}>Update</Button>
+    <Button variant="danger" type="button" onClick={handleDeregister}>deregister</Button>
     </Form>
     );
    }

@@ -10,13 +10,13 @@ import { Link } from "react-router-dom";
 import axios from'axios';
 export class MovieView extends React.Component{
 
-
   addFavorite(movie) {
-    let token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
     let url = "https://my-movies-souperapp.herokuapp.com/users/" + localStorage.getItem('user')
         + "/FavoriteMovies/" + movie._id;
+        console.log(url);
     axios
-        .post(url, {
+        .post(url, {}, {
             headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => {
@@ -45,22 +45,23 @@ export class MovieView extends React.Component{
                   </div>
             </Card.Header>
               <Card.Body>
+              <div className = "movie-director">
+                    <Link to={`/directors/${movie.Director.Name}`}>
+                    <Button variant ='secondary' className = "buttons">{movie.Director.Name}</Button>
+                    </Link>
+                  </div>
+                  
+                  <div className = "movie-genre">
+                    <Link to={`/genres/${movie.Genre.Name}`}>
+                      <Button variant ='secondary' className = "buttons">{movie.Genre.Name}</Button>
+                    </Link>
+                  </div>
+
                   <div className = "movie-description">
                     <span className = "label">Description: </span>
                     <span className = "value">{movie.Description}</span>
                   </div>
-                  <div className = "movie-director">
-                    <Link to={`/directors/${movie.Director.Name}`}>
-                      <Button variant = 'link'>Director: </Button>
-                      <span className = "value">{movie.Director.Name}</span>
-                    </Link>
-                  </div>
-                  <div className = "movie-genre">
-                    <Link to={`/genres/${movie.Genre.Name}`}>
-                      <Button variant ='link'>Genre: </Button>
-                      <span className = "value">{movie.Genre.Name}</span>
-                    </Link>
-                  </div>
+
                     <Button variant ="danger" onClick={() => {onBackClick(null);}} className ="movieBack">Back</Button>
                     <Button variant="dark" onClick={() => this.addFavorite(movie)}>Add to Favorites</Button>
                 </Card.Body>

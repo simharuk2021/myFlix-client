@@ -1,6 +1,6 @@
 .cardBorder { width: 17rem; 
-height: 55rem;
-padding:0;
+height: 50rem;
+margin-top:60px;
 }
 
 .cardIMG { height: 20rem;
@@ -12,11 +12,11 @@ padding:0;
 
 .cardText{
     text-align: center;
+    margin-top: 1rem;
 }
 .cardBtn{
     position: absolute; 
     bottom: 0;
     margin-bottom: 1rem;
     left:40%;
-    margin-top:1rem;
 }
