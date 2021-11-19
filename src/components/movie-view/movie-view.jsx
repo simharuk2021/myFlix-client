@@ -8,6 +8,8 @@ import Image from'react-bootstrap/Image';
 import { MovieCard } from '../movie-card/movie-card';
 import { Link } from "react-router-dom";
 import axios from'axios';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 export class MovieView extends React.Component{
 
   addFavorite(movie) {
@@ -28,44 +30,40 @@ export class MovieView extends React.Component{
     render() {
       
         const {movie, onBackClick} = this.props;
+       return (
 
-      
-        return (
-
-          
           <Card>
-            <div className = "movie-view">
-                  <div className = "movie-poster">
-                    <img className = "movieIMG" src ={movie.ImagePath} fluid/>
-                  </div>
-            <Card.Header>
+               <Card.Header>
                   <div className = "movie-title">
                     <span className = "label">Title: </span>
                     <span className = "value">{movie.Title}</span>
                   </div>
             </Card.Header>
               <Card.Body>
-              <div className = "movie-director">
+                <Row>
+                  <div className = "movie-poster">
+                    <img className = "movieIMG" src ={movie.ImagePath} fluid/>
+                  </div>
+                
+              <div className = "movie-buttons">
                     <Link to={`/directors/${movie.Director.Name}`}>
-                    <Button variant ='secondary' className = "buttons">{movie.Director.Name}</Button>
+                    <Button variant ='secondary' className = "movie-buttons">Director Name: {movie.Director.Name}</Button>
                     </Link>
-                  </div>
-                  
-                  <div className = "movie-genre">
                     <Link to={`/genres/${movie.Genre.Name}`}>
-                      <Button variant ='secondary' className = "buttons">{movie.Genre.Name}</Button>
+                      <Button variant ='secondary' className = "movie-buttons">Genre Name: {movie.Genre.Name}</Button>
                     </Link>
                   </div>
-
+                  </Row>
                   <div className = "movie-description">
-                    <span className = "label">Description: </span>
-                    <span className = "value">{movie.Description}</span>
+                    <div className = "label">Description: </div>
+                    <span className = "movie-description">{movie.Description}</span>
                   </div>
-
-                    <Button variant ="danger" onClick={() => {onBackClick(null);}} className ="movieBack">Back</Button>
-                    <Button variant="dark" onClick={() => this.addFavorite(movie)}>Add to Favorites</Button>
+                    <div className="bottomButtons">
+                    <Button className ="backButton" variant ="danger" onClick={() => {onBackClick(null);}}>Back</Button>
+                    <Button className="favButton" variant="dark" onClick={() => this.addFavorite(movie)}>Add to Favorites</Button>
+                    </div>
                 </Card.Body>
-            </div>
+            
           </Card>
         );       
     }

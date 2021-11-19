@@ -1,14 +1,11 @@
-// .movie-view{
-//     align-items: center;
-// }
-
 .movie-poster{
-    padding-top: 5rem;
+    padding-top: 2rem;
     position:relative;
-    left: 40%;
-  }
+    position:left;
+      }
 
 .movie-title{
+    margin-top: 3rem;
     font-size: 120%;
     text-align: center;
 }
@@ -26,6 +23,24 @@
     margin-bottom: 1rem;
 }
 
-.buttons{
-    position:center;
+.movie-buttons{
+    display:flex;
+    flex-direction: column;
+    margin-top: 5px;
+    justify-content: center;
+    margin: 2rem;
+
 }
+
+.label{
+    text-align:center;
+}
+
+.bottomButtons{
+   display:flex;
+   flex-wrap:wrap;
+   margin: 1rem;
+   justify-content: space-between;
+
+}
+

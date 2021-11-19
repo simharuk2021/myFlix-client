@@ -71,13 +71,17 @@ export class ProfileView extends React.Component {
       <Container>
         <Card className = "profile-view">
         <Card.Header>
+        <div className = "userdetails">
+        <span className = "label">User Details: </span>
+        {/* <span className = "value">{this.state.Username}</span> */}
+        </div>
+        </Card.Header>
+        <Card.Body>
         <div className = "username">
         <span className = "label">Username: </span>
         <span className = "value">{this.state.Username}</span>
         </div>
-        </Card.Header>
-        <Card.Body>
-        <div className = "Password">
+         <div className = "Password">
         <span className = "label">Password: </span>
         <span className = "value">******</span>
         </div>
@@ -90,29 +94,33 @@ export class ProfileView extends React.Component {
         <span className = "value">{this.state.Birthday}</span>
         </div>
                
-        <Button variant ="danger" onClick={() => {onBackClick(null);}}>Back</Button>
+        <Button className = "buttons" variant ="danger" onClick={() => {onBackClick(null);}}>Back</Button>
         <span>
-        <Button href = "/update"variant ="primary">Update User Details</Button>
+        <Button className = "buttons" href = "/update"variant ="primary">Update User Details</Button>
         </span>
         </Card.Body>
         </Card>
+
         <Card className="cardFav">
-        <div className = "Favorite-Movies">
-        <Card.Header><span className = "label">Favorite Movies: </span></Card.Header>
+          
+        <Card.Header className="header">Favorite Movies:</Card.Header>
+        
         <Row>
           {this.state.FavoriteMovies.map((movie) => { 
-            return (           
-            <Row>
-              <Col xs={2} md={4} lg ={6} xl={12}>
-                {movie.Title}
+            return (    
+            <Col xs={8} md={6} lg ={4} xl={4}>
+              <Card className = "fav-cardImage">       
+               {movie.Title}
                 <Card.Img src={movie.ImagePath} />
-              <Button variant="dark" onClick={() => this.removeFavorite(movie)}>Click to Remove</Button>
+              <Button className = "buttons" variant="dark" onClick={() => this.removeFavorite(movie)}>Click to Remove</Button>
+              </Card>
               </Col>
-            </Row>) 
+            
+            ) 
           }
           )}
         </Row>
-        </div>
+        
         </Card>
       
         </Container>
