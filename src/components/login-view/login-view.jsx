@@ -4,6 +4,8 @@ import Button from 'react-bootstrap/Button';
 import './login-view.scss';
 import axios from 'axios';
 import {Link} from "react-router-dom";
+import { connect } from 'react-redux';
+
 export function LoginView (props){
     const[ username, setUsername] = useState('');
     const[ password, setPassword] = useState('');
@@ -21,8 +23,7 @@ props.onLoggedIn(data);
 alert('login successfull');
  })
  .catch (e => {
-    console.log('no such user')
-    console.log(username, password)
+    console.log(e)
  });
     };
     
@@ -47,4 +48,7 @@ alert('login successfull');
 
     );
    }
+const mapDispatchToProps= (dispatch) => ({handleSubmit: (username, password)=> dispatch(handleSubmit(username, password))
+});
 
+   export default connect(mapDispatchToProps)(LoginView);

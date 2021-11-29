@@ -1,3 +1,28 @@
+.cardBorder {
+  width: 20rem;
+  height: 50rem;
+  margin-top: 60px;
+}
+
+.cardIMG {
+  height: 20rem;
+}
+
+.cardTitle {
+  text-align: center;
+}
+
+.cardText {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.cardBtn {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 1rem;
+  left: 40%;
+}
 .loginForm {
   margin-top: 5rem;
 }
@@ -43,31 +68,6 @@
   flex-wrap: wrap;
   margin: 1rem;
   justify-content: space-between;
-}
-.cardBorder {
-  width: 20rem;
-  height: 50rem;
-  margin-top: 60px;
-}
-
-.cardIMG {
-  height: 20rem;
-}
-
-.cardTitle {
-  text-align: center;
-}
-
-.cardText {
-  text-align: center;
-  margin-top: 1rem;
-}
-
-.cardBtn {
-  position: absolute;
-  bottom: 0;
-  margin-bottom: 1rem;
-  left: 40%;
 }
 .profile-view {
   margin-top: 5rem;
@@ -128,4 +128,4 @@
 .movie-poster img {
   max-height: 300px;
 }
-/*# sourceMappingURL=index.578945e6.css.map */
+/*# sourceMappingURL=index.925607dc.css.map */
