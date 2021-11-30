@@ -8,7 +8,7 @@ Additional description about the project and its features.
 
 - Javascript,
 - REACT,
-- technologies used
+- Redux
 
 ## Live Demo
 
@@ -40,14 +40,14 @@ Some run tests were made after the Parcel build in order to check the html page 
 The site was then run on a localhost so changes to the DOM could be dynamically visible and the functionality of the event code and views could be tested.
 
 ### Deployment
-
+The API is hosted within heroku but the current verion of this client project is only available locally through the parcel tool. Future plans are to host this project using Netlify.
 
 
 ## Authors
 
 👤 **Author1**
 
-- Github: [@githubhandle](https://github.com/githubhandle)
+- Github: [@simharuk2021](https://github.com/simharuk2021/myFlix-client.git)
 - Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
 - Linkedin: [linkedin](https://linkedin.com/linkedinhandle)
 
